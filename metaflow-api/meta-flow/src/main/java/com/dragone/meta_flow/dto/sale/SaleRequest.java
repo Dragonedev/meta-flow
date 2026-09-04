@@ -1,4 +1,4 @@
-package com.dragone.meta_flow.database.repository.sale;
+package com.dragone.meta_flow.dto.sale;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

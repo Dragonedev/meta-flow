@@ -2,7 +2,6 @@ package com.dragone.meta_flow.database.model;
 
 import com.dragone.meta_flow.database.model.enums.GoalStatus;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -51,8 +50,8 @@ public class GoalEntity {
     private LocalDate createdAt;
 
     @NotNull
-    @Column(name = "update_at",nullable = false)
-    private LocalDate updateAt;
+    @Column(name = "updated_at",nullable = false)
+    private LocalDate updatedAt;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)

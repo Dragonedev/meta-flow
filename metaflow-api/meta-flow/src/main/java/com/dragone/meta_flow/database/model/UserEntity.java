@@ -38,9 +38,9 @@ public class UserEntity {
 
     @NotNull
     @Column(name = "created_at", nullable = false)
-    private LocalDate cratedAt;
+    private LocalDate createdAt;
 
     @NotNull
-    @Column(name = "update_at", nullable = false)
-    private LocalDate updateAt;
+    @Column(name = "updated_at", nullable = false)
+    private LocalDate updatedAt;
 }

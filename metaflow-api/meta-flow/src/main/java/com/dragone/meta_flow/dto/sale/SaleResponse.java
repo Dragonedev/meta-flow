@@ -1,7 +1,4 @@
-package com.dragone.meta_flow.database.repository.sale;
-
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+package com.dragone.meta_flow.dto.sale;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -12,7 +9,7 @@ public record SaleResponse(
         BigDecimal amount,
         LocalDate saleDate,
         String description,
-        LocalDate cratedAt,
+        LocalDate createdAt,
         Integer userId,
         Integer goalId
 ) {

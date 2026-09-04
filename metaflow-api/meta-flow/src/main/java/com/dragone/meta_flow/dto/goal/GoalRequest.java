@@ -1,7 +1,5 @@
-package com.dragone.meta_flow.database.repository.goal;
+package com.dragone.meta_flow.dto.goal;
 
-import com.dragone.meta_flow.database.model.enums.GoalStatus;
-import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 

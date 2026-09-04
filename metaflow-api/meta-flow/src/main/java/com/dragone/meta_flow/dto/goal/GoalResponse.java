@@ -1,4 +1,4 @@
-package com.dragone.meta_flow.database.repository.goal;
+package com.dragone.meta_flow.dto.goal;
 
 import com.dragone.meta_flow.database.model.enums.GoalStatus;
 
