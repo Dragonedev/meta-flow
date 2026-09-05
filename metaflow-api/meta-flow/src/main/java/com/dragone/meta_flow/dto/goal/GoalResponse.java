@@ -11,6 +11,9 @@ public record GoalResponse(
         BigDecimal targetAmount,
         LocalDate startDate,
         LocalDate endDate,
-        GoalStatus status
+        GoalStatus status,
+        LocalDate createdAt,
+        LocalDate updatedAt,
+        Integer userId
 ) {
 }

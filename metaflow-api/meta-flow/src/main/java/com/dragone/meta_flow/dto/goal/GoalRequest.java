@@ -18,7 +18,10 @@ public record GoalRequest(
         LocalDate startDate,
 
         @NotNull
-        LocalDate endDate
+        LocalDate endDate,
+
+        @NotNull
+        Integer userId
 
 ) {
 }
