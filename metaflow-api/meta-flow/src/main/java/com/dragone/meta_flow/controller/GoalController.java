@@ -39,6 +39,17 @@ public class GoalController {
         return goalService.getGoalById(id);
     }
 
+    @PutMapping("/{id}")
+    public GoalResponse updateGoal(@Valid @RequestBody GoalRequest goalRequest, @PathVariable @Positive Integer id) {
+        return goalService.updateGoal(goalRequest, id);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteGoal(@PathVariable @Positive Integer id) {
+        goalService.deleteGoal(id);
+    }
+
 
 
 

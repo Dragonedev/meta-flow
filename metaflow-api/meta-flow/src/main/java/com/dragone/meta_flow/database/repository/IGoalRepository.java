@@ -7,5 +7,6 @@ public interface IGoalRepository extends JpaRepository<GoalEntity, Integer> {
 
     boolean existsByTitleAndUser(String title, Integer userId);
 
-    
+    boolean existsByTitleAndUserIdAndIdNot(String title, Integer userId, Integer id);
+
 }
