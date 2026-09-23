@@ -1,9 +1,6 @@
 package com.dragone.meta_flow.handler;
 
-import com.dragone.meta_flow.exception.ErrorResponse;
-import com.dragone.meta_flow.exception.GoalAlreadyExistsException;
-import com.dragone.meta_flow.exception.GoalOperationNotAllowedException;
-import com.dragone.meta_flow.exception.UserNotFoundException;
+import com.dragone.meta_flow.exception.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -52,4 +49,13 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.CONFLICT).body(response);
     }
 
+    @ExceptionHandler(GoalNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleGoalNotFoundException(GoalNotFoundException ex){
+        ErrorResponse response = ErrorResponse.builder()
+                .message(ex.getMessage())
+                .status(HttpStatus.NOT_FOUND.value())
+                .build();
+
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+    }
 }

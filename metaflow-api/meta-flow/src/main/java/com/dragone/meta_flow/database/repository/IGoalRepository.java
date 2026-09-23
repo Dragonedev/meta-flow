@@ -6,4 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface IGoalRepository extends JpaRepository<GoalEntity, Integer> {
 
     boolean existsByTitleAndUser(String title, Integer userId);
+
+    
 }

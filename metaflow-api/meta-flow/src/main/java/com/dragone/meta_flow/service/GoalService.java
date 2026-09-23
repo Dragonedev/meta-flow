@@ -8,10 +8,16 @@ import com.dragone.meta_flow.database.repository.IUserRepository;
 import com.dragone.meta_flow.dto.goal.GoalRequest;
 import com.dragone.meta_flow.dto.goal.GoalResponse;
 import com.dragone.meta_flow.exception.GoalAlreadyExistsException;
+import com.dragone.meta_flow.exception.GoalNotFoundException;
 import com.dragone.meta_flow.exception.GoalOperationNotAllowedException;
 import com.dragone.meta_flow.exception.UserNotFoundException;
+import jakarta.validation.constraints.Positive;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.time.LocalDate;
 
@@ -52,6 +58,18 @@ public class GoalService {
         GoalEntity savedGoal = goalRepository.save(goal);
 
         return toResponse(savedGoal);
+    }
+
+    public Page<GoalResponse> getGoals(Pageable pageable){
+        return goalRepository.findAll(pageable)
+                .map(this::toResponse);
+    }
+
+    public GoalResponse getGoalById(@PathVariable @Positive Integer id){
+        GoalEntity goal = goalRepository.findById(id)
+                .orElseThrow(()-> new GoalNotFoundException("goal not found"));
+
+        return toResponse(goal);
     }
 
     private GoalResponse toResponse(GoalEntity goal){
