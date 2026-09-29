@@ -18,7 +18,10 @@ public record SaleRequest(
         String description,
 
         @NotNull
-        Integer goalId
+        Integer goalId,
+
+        @NotNull
+        Integer userId
 
 ) {
 }
