@@ -7,6 +7,8 @@ import com.dragone.meta_flow.dto.user.UserResponse;
 import com.dragone.meta_flow.exception.UserAlreadyExistsException;
 import com.dragone.meta_flow.exception.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -38,6 +40,18 @@ public class UserService {
         return toResponse(savedUser);
     }
 
+    public Page<UserResponse> getUsers(Pageable pageable){
+        return userRepository.findAll(pageable)
+                .map(this::toResponse);
+    }
+
+    public UserResponse getUserById(Integer id){
+        UserEntity user = userRepository.findById(id)
+                .orElseThrow(() -> new UserNotFoundException("user not found"));
+
+        return  toResponse(user);
+    }
+
     public UserResponse updateUser(Integer id, UserRequest userRequest){
         UserEntity user = userRepository.findById(id)
                 .orElseThrow(()-> new UserNotFoundException("user not found"));
@@ -49,6 +63,13 @@ public class UserService {
         UserEntity savedUser = userRepository.save(user);
 
         return toResponse(savedUser);
+    }
+
+    public void deleteUser(Integer id){
+        UserEntity user = userRepository.findById(id)
+                .orElseThrow(() -> new UserNotFoundException("user not found"));
+
+        userRepository.delete(user);
     }
 
     private UserResponse toResponse(UserEntity user){
